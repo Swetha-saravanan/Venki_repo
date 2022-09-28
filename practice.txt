@@ -1,0 +1,234 @@
+swetham@fdldl0292:~/venki$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        demo.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+swetham@fdldl0292:~/venki$ git add ./demo.txt
+swetham@fdldl0292:~/venki$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   demo.txt
+
+swetham@fdldl0292:~/venki$ git commit -m"Added demo.txt file"
+[master (root-commit) 07b56e2] Added demo.txt file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 demo.txt
+swetham@fdldl0292:~/venki$ git push -u origin main
+error: src refspec main does not match any
+error: failed to push some refs to 'origin'
+swetham@fdldl0292:~/venki$ ^C
+swetham@fdldl0292:~/venki$ git push -u origin master
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+swetham@fdldl0292:~/venki$ git push
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+swetham@fdldl0292:~/venki$ git branch -M main
+swetham@fdldl0292:~/venki$ git remote add origin https://github.com/Swetha-saravanan/Venki_repo.git
+swetham@fdldl0292:~/venki$ git push -u origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 234 bytes | 234.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/Swetha-saravanan/Venki_repo.git
+ * [new branch]      main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+swetham@fdldl0292:~/venki$ git log
+commit 07b56e2ac8bba9f345223ecd127fd60e41ee591a (HEAD -> main, origin/main)
+Author: Swetha-Saravanan <swethakarthika16@gmail.com>
+Date:   Tue Sep 27 19:27:13 2022 +0530
+
+    Added demo.txt file
+swetham@fdldl0292:~/venki$ git shortlog
+Swetha-Saravanan (1):
+      Added demo.txt file
+
+swetham@fdldl0292:~/venki$ git reflog
+07b56e2 (HEAD -> main, origin/main) HEAD@{0}: Branch: renamed refs/heads/master to refs/heads/main
+07b56e2 (HEAD -> main, origin/main) HEAD@{2}: commit (initial): Added demo.txt file
+swetham@fdldl0292:~/venki$ git add ./demo.txt
+swetham@fdldl0292:~/venki$ git commit -m"Modified swetha name"
+[main 79682a4] Modified swetha name
+ 1 file changed, 1 insertion(+)
+swetham@fdldl0292:~/venki$ git push -u origin main
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 273 bytes | 273.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/Swetha-saravanan/Venki_repo.git
+   07b56e2..79682a4  main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+swetham@fdldl0292:~/venki$ git log
+commit 79682a48d4567b13d7ee2b80ab878c5ed78b2e2b (HEAD -> main, origin/main)
+Author: Swetha-Saravanan <swethakarthika16@gmail.com>
+Date:   Tue Sep 27 19:31:53 2022 +0530
+
+    Modified swetha name
+
+commit 07b56e2ac8bba9f345223ecd127fd60e41ee591a
+Author: Swetha-Saravanan <swethakarthika16@gmail.com>
+Date:   Tue Sep 27 19:27:13 2022 +0530
+
+    Added demo.txt file
+swetham@fdldl0292:~/venki$ ^C
+swetham@fdldl0292:~/venki$ git revert 79682a48
+[main 734168f] Revert "Modified swetha name"
+ 1 file changed, 1 deletion(-)
+swetham@fdldl0292:~/venki$ git log
+commit 734168f27a0689b1181266d88a6ae1a0b85a14d4 (HEAD -> main)
+Author: Swetha-Saravanan <swethakarthika16@gmail.com>
+Date:   Tue Sep 27 19:33:03 2022 +0530
+
+    Revert "Modified swetha name"
+
+    This reverts commit 79682a48d4567b13d7ee2b80ab878c5ed78b2e2b.
+
+commit 79682a48d4567b13d7ee2b80ab878c5ed78b2e2b (origin/main)
+Author: Swetha-Saravanan <swethakarthika16@gmail.com>
+Date:   Tue Sep 27 19:31:53 2022 +0530
+
+    Modified swetha name
+swetham@fdldl0292:~/venki$
+swetham@fdldl0292:~/venki$ git reset --soft 79682a48
+swetham@fdldl0292:~/venki$ git log
+commit 79682a48d4567b13d7ee2b80ab878c5ed78b2e2b (HEAD -> main, origin/main)
+Author: Swetha-Saravanan <swethakarthika16@gmail.com>
+Date:   Tue Sep 27 19:31:53 2022 +0530
+
+    Modified swetha name
+
+commit 07b56e2ac8bba9f345223ecd127fd60e41ee591a
+Author: Swetha-Saravanan <swethakarthika16@gmail.com>
+Date:   Tue Sep 27 19:27:13 2022 +0530
+
+    Added demo.txt file
+swetham@fdldl0292:~/venki$ git reset
+Unstaged changes after reset:
+M       demo.txt
+swetham@fdldl0292:~/venki$ git stash pop
+No stash entries found.
+swetham@fdldl0292:~/venki$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   demo.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+swetham@fdldl0292:~/venki$ git stash
+Saved working directory and index state WIP on main: 79682a4 Modified swetha name
+swetham@fdldl0292:~/venki$ git add ./demo.txt
+swetham@fdldl0292:~/venki$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+swetham@fdldl0292:~/venki$ git fetch
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 657 bytes | 219.00 KiB/s, done.
+From https://github.com/Swetha-saravanan/Venki_repo
+   79682a4..40bea90  main       -> origin/main
+swetham@fdldl0292:~/venki$ git merge
+Updating 79682a4..40bea90
+Fast-forward
+ demo.txt | 1 +
+ 1 file changed, 1 insertion(+)
+swetham@fdldl0292:~/venki$ git diff --staged
+swetham@fdldl0292:~/venki$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   demo.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+swetham@fdldl0292:~/venki$ git add ./demo.txt
+swetham@fdldl0292:~/venki$ git diff --staged
+diff --git a/demo.txt b/demo.txt
+index 76b8aa8..0eb5eae 100644
+--- a/demo.txt
++++ b/demo.txt
+@@ -1,3 +1,4 @@
+ Swetha
+ Saravanan
+ She is bad girl
++She is from madurai
+swetham@fdldl0292:~/venki$ git branch Demo
+swetham@fdldl0292:~/venki$ git switch Demo
+M       demo.txt
+Switched to branch 'Demo'
+swetham@fdldl0292:~/venki$ git add ./d
+fatal: pathspec './d' did not match any files
+swetham@fdldl0292:~/venki$ git add ./demo.txt
+swetham@fdldl0292:~/venki$ git commit -m"Added new line"
+[Demo ae33a12] Added new line
+ 1 file changed, 2 insertions(+)
+swetham@fdldl0292:~/venki$ git push -u origin Demo
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 315 bytes | 315.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote:
+remote: Create a pull request for 'Demo' on GitHub by visiting:
+remote:      https://github.com/Swetha-saravanan/Venki_repo/pull/new/Demo
+remote:
+To https://github.com/Swetha-saravanan/Venki_repo.git
+ * [new branch]      Demo -> Demo
+Branch 'Demo' set up to track remote branch 'Demo' from 'origin'.
+swetham@fdldl0292:~/venki$ git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+swetham@fdldl0292:~/venki$ git add ./demo.txt
+swetham@fdldl0292:~/venki$ git commit -m"Added new line"
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+swetham@fdldl0292:~/venki$ git push -u origin Main
+error: src refspec Main does not match any
+error: failed to push some refs to 'https://github.com/Swetha-saravanan/Venki_repo.git'
+swetham@fdldl0292:~/venki$ git push -u origin main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+Everything up-to-date
+swetham@fdldl0292:~/venki$ git pull
+Already up to date.
+swetham@fdldl0292:~/venki$ git switch Demo
+Switched to branch 'Demo'
+Your branch is up to date with 'origin/Demo'.
+swetham@fdldl0292:~/venki$ git pull
+Already up to date.
+swetham@fdldl0292:~/venki$ git fetch
+swetham@fdldl0292:~/venki$ git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+swetham@fdldl0292:~/venki$ git merge
+Already up to date.
+swetham@fdldl0292:~/venki$ git diff --staged
+swetham@fdldl0292:~/venki$ 
